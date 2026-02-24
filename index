@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dr Mahfoud Amara – Publications Map</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <div class="header-inner">
+        <div class="header-text">
+          <div class="header-eyebrow">Academic Publications</div>
+          <h1>Dr Mahfoud Amara</h1>
+          <p class="header-sub">Associate Professor in Sport Social Sciences &amp; Management<br>College of Sport Sciences, Qatar University</p>
+        </div>
+        <div class="header-stats" id="header-stats">
+          <div class="stat"><span class="stat-num" id="stat-pubs">–</span><span class="stat-label">Publications</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span class="stat-num" id="stat-countries">–</span><span class="stat-label">Countries</span></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section id="map" aria-label="Map of Arab countries"></section>
+
+      <aside class="panel" aria-live="polite">
+
+        <div class="filters-block">
+          <div class="filter-label">Filter by region</div>
+          <div class="region-btns">
+            <button class="region-btn is-active" data-region="all" type="button">All</button>
+            <button class="region-btn" data-region="North Africa" type="button">North Africa</button>
+            <button class="region-btn" data-region="Middle East" type="button">Middle East</button>
+          </div>
+        </div>
+
+        <div class="search-block">
+          <label for="country-search" class="filter-label">Search country</label>
+          <div class="search-wrap">
+            <svg class="search-icon" viewBox="0 0 20 20" fill="none"><circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <input id="country-search" type="search" placeholder="Type a country name…" />
+          </div>
+          <div id="country-list" class="country-list"></div>
+        </div>
+
+        <div class="pub-panel" id="pub-panel">
+          <div class="pub-panel-header">
+            <div class="pub-location-tag" id="pub-location-tag">Select a country</div>
+            <h2 id="panel-title">Click any marker</h2>
+            <p id="panel-subtitle" class="panel-sub">Choose a marker on the map or a country from the list to display publications.</p>
+          </div>
+          <ul id="publication-list"></ul>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <span>© Dr Mahfoud Amara, Qatar University</span>
+        <a href="http://qufaculty.qu.edu.qa/mamara/publications/" target="_blank" rel="noopener">Full Publication Profile ↗</a>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
