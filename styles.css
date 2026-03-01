@@ -83,10 +83,13 @@ h1 { font-family: var(--font-display); font-size: clamp(1.4rem,2.5vw,2rem); font
 .featured-chip-year { font-size: 0.65rem; color: var(--accent-mid); font-weight: 600; }
 
 /* ── TAB NAV ── */
-.tab-nav { display: flex; background: #141210; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0 1.75rem; }
-.tab-btn { background: none; border: none; border-bottom: 3px solid transparent; color: #a8a09a; font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; padding: 0.7rem 1.2rem; cursor: pointer; letter-spacing: 0.03em; transition: all 0.15s; margin-bottom: -1px; }
-.tab-btn:hover { color: #fff; }
-.tab-btn.is-active { color: var(--accent-mid); border-bottom-color: var(--accent-mid); }
+.tab-nav { display: flex; background: #141210; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0 1.75rem; gap: 0.25rem; }
+.tab-btn { display: inline-flex; align-items: center; gap: 0.45rem; background: none; border: none; border-bottom: 3px solid transparent; color: #808080; font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; padding: 0.75rem 1.1rem; cursor: pointer; letter-spacing: 0.02em; transition: all 0.15s; margin-bottom: -1px; white-space: nowrap; }
+.tab-btn svg { opacity: 0.6; transition: opacity 0.15s; }
+.tab-btn:hover { color: #d0d0d0; }
+.tab-btn:hover svg { opacity: 1; }
+.tab-btn.is-active { color: #fff; border-bottom-color: var(--accent-mid); }
+.tab-btn.is-active svg { opacity: 1; color: var(--accent-mid); }
 
 /* ── TAB VIEWS ── */
 .tab-view { display: none; }
@@ -238,3 +241,31 @@ footer a:hover { color: #fff; }
   .tab-btn { padding: 0.7rem 0.75rem; font-size: 0.78rem; }
   .featured-bar { display: none; }
 }
+
+/* ── MAP HINT OVERLAY ── */
+.map-hint {
+  position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+  background: rgba(28,26,22,0.82); color: #fff;
+  padding: 0.55rem 1.1rem; border-radius: 999px;
+  font-size: 0.8rem; font-weight: 500; pointer-events: none;
+  z-index: 500; backdrop-filter: blur(4px);
+  transition: opacity 0.4s ease;
+  white-space: nowrap;
+}
+.map-hint.hidden { opacity: 0; }
+#map { position: relative; }
+
+/* ── HINT EXAMPLE ── */
+.hint-example { color: var(--accent); font-style: normal; font-weight: 600; }
+
+/* ── PANEL EMPTY STATE ── */
+.panel-empty-state {
+  padding: 2rem 1.25rem; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+}
+.panel-empty-icon { font-size: 2rem; opacity: 0.4; }
+.panel-empty-title { font-family: var(--font-display); font-size: 1rem; color: var(--ink); }
+.panel-empty-sub { font-size: 0.82rem; color: var(--ink-muted); line-height: 1.55; max-width: 260px; }
+
+/* ── SELECTED COUNTRY HIGHLIGHT in list ── */
+.country-item.is-selected { background: var(--accent-light); color: var(--accent); font-weight: 600; }
