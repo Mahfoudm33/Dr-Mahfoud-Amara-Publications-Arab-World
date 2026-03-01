@@ -271,188 +271,208 @@ footer a:hover { color: #fff; }
 .country-item.is-selected { background: var(--accent-light); color: var(--accent); font-weight: 600; }
 
 /* ═══════════════════════════════════════════
-   RESEARCH IMPACT DASHBOARD
+   RESEARCH IMPACT DASHBOARD — redesigned
 ═══════════════════════════════════════════ */
 .impact-bar {
-  background: #0f0e0c;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  padding: 0.9rem 1.75rem;
+  background: #111009;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: 1rem 1.75rem;
 }
 .impact-inner {
   max-width: 1400px;
   margin: 0 auto;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   gap: 0;
-  flex-wrap: wrap;
+  align-items: stretch;
 }
-.impact-divider {
+
+/* ── Shared eyebrow ── */
+.impact-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #454035;
+  margin-bottom: 0.7rem;
+  white-space: nowrap;
+}
+.impact-eyebrow-sep { color: #2a2620; }
+.impact-scholar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--accent-mid);
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.65rem;
+  font-weight: 600;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+.impact-scholar-link:hover { opacity: 1; }
+.impact-updated-inline {
+  margin-left: auto;
+  color: #2e2c28;
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+
+/* ── LEFT: big numbers ── */
+.impact-left {
+  padding-right: 2.5rem;
+  border-right: 1px solid rgba(255,255,255,0.05);
+}
+.impact-numbers {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.impact-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1.4rem;
+}
+.impact-stat:first-child { padding-left: 0; }
+.impact-stat-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: #d0c8be;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.impact-stat-num--warm { color: var(--accent-mid); }
+.impact-stat-label {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #3a3530;
+  margin-top: 0.3rem;
+  white-space: nowrap;
+}
+.impact-stat-divider {
   width: 1px;
-  background: rgba(255,255,255,0.07);
-  align-self: stretch;
-  margin: 0 1.5rem;
+  height: 2rem;
+  background: rgba(255,255,255,0.05);
   flex-shrink: 0;
 }
 
-/* ── Section label ── */
-.impact-section-label {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: #606060;
-  margin-bottom: 0.65rem;
+/* ── CENTRE: most cited ── */
+.impact-centre {
+  padding: 0 2.5rem;
+  border-right: 1px solid rgba(255,255,255,0.05);
 }
-.impact-source {
-  margin-left: auto;
-  font-size: 0.62rem;
-  font-weight: 600;
-  color: var(--accent-mid);
-  text-decoration: none;
-  letter-spacing: 0;
-  text-transform: none;
-  opacity: 0.8;
-  transition: opacity 0.15s;
-}
-.impact-source:hover { opacity: 1; }
-
-/* ── Metrics grid ── */
-.impact-section.impact-metrics { flex-shrink: 0; }
-.impact-metrics-grid {
-  display: flex;
-  gap: 0.25rem;
-  align-items: stretch;
-}
-.impact-metric {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 0.9rem;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 0.45rem;
-  min-width: 68px;
-  transition: border-color 0.15s;
-}
-.impact-metric:hover { border-color: rgba(255,255,255,0.14); }
-.impact-metric--accent {
-  background: rgba(212,133,95,0.08);
-  border-color: rgba(212,133,95,0.2);
-}
-.impact-num {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: #e8e0d8;
-  line-height: 1;
-  white-space: nowrap;
-}
-.impact-metric--accent .impact-num { color: var(--accent-mid); }
-.impact-desc {
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #505050;
-  margin-top: 0.3rem;
-  white-space: nowrap;
-}
-
-/* ── Top papers ── */
-.impact-section.impact-top-papers { flex: 1; min-width: 260px; }
-.impact-papers {
+.impact-top-list {
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
 }
-.impact-paper {
-  padding: 0.45rem 0.65rem;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 0.4rem;
-  transition: border-color 0.15s;
-}
-.impact-paper:hover { border-color: rgba(255,255,255,0.12); }
-.impact-paper-title {
-  display: block;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #c8c0b8;
-  text-decoration: none;
-  line-height: 1.35;
-  transition: color 0.15s;
-}
-.impact-paper-title:hover { color: #fff; }
-.impact-paper-meta {
+.impact-top-item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  margin-top: 0.3rem;
+  gap: 0.85rem;
+  text-decoration: none;
+  padding: 0.45rem 0.6rem;
+  border-radius: 0.4rem;
+  border: 1px solid transparent;
+  transition: all 0.15s;
 }
-.impact-paper-year {
-  font-size: 0.68rem;
-  color: #505050;
+.impact-top-item:hover {
+  background: rgba(255,255,255,0.03);
+  border-color: rgba(255,255,255,0.07);
 }
-.impact-cite-badge {
-  font-size: 0.65rem;
+.impact-top-badge {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--accent-mid);
-  background: rgba(212,133,95,0.1);
-  border: 1px solid rgba(212,133,95,0.2);
-  border-radius: 999px;
-  padding: 0.1rem 0.5rem;
-  white-space: nowrap;
-  letter-spacing: 0.03em;
+  line-height: 1;
+  min-width: 2.5rem;
+  text-align: right;
+}
+.impact-top-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.impact-top-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #b0a89e;
+  line-height: 1.3;
+  transition: color 0.15s;
+}
+.impact-top-item:hover .impact-top-title { color: #e0d8d0; }
+.impact-top-meta {
+  font-size: 0.62rem;
+  color: #3a3530;
 }
 
-/* ── Profile links ── */
-.impact-section.impact-profiles { flex-shrink: 0; }
-.impact-profile-links {
+/* ── RIGHT: profiles ── */
+.impact-right {
+  padding-left: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.impact-profiles-row {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-  margin-bottom: 0.55rem;
 }
-.impact-profile-btn {
+.impact-profile-pill {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  font-size: 0.76rem;
+  font-size: 0.73rem;
   font-weight: 600;
-  color: #888;
+  color: #4a4540;
   text-decoration: none;
-  padding: 0.28rem 0.6rem;
-  border: 1px solid rgba(255,255,255,0.06);
+  padding: 0.3rem 0.65rem;
   border-radius: 0.35rem;
-  transition: all 0.15s;
-  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  transition: all 0.18s;
+  white-space: nowrap;
 }
-.impact-profile-btn:hover {
-  color: #fff;
-  border-color: rgba(255,255,255,0.15);
-  background: rgba(255,255,255,0.05);
-}
-.impact-updated {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-size: 0.6rem;
-  color: #404040;
-  margin-top: 0.1rem;
+.impact-profile-pill:hover {
+  color: #c8c0b8;
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.1);
 }
 
 /* ── Responsive ── */
-@media (max-width: 980px) {
-  .impact-bar { padding: 0.75rem 1rem; }
-  .impact-inner { gap: 0.75rem; }
-  .impact-divider { display: none; }
-  .impact-section { width: 100%; }
-  .impact-metrics-grid { gap: 0.35rem; }
+@media (max-width: 1100px) {
+  .impact-inner {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+  }
+  .impact-right {
+    grid-column: 1 / -1;
+    padding-left: 0;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-right: none;
+  }
+  .impact-profiles-row { flex-direction: row; flex-wrap: wrap; }
+}
+@media (max-width: 900px) {
+  .impact-inner { grid-template-columns: 1fr; }
+  .impact-left { padding-right: 0; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; }
+  .impact-centre { padding: 0.75rem 0; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .impact-stat { padding: 0 0.9rem; }
+  .impact-stat:first-child { padding-left: 0; }
+  .impact-stat-num { font-size: 1.55rem; }
+  .impact-updated-inline { display: none; }
 }
 @media (max-width: 600px) {
   .impact-bar { display: none; }
