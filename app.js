@@ -188,10 +188,37 @@ function typeClass(t){ return TYPE_CLASSES[t.toLowerCase()] || "pub-type-default
 //  MAP SETUP
 // ─────────────────────────────────────────────
 var map = L.map("map", { minZoom:2, maxZoom:10 }).setView([25,10],4);
-L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-  maxZoom:19,
-  attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>'
-}).addTo(map);
+// Basemap: Natural Earth boundaries (no API key). Western Sahara (ISO 3166 code 732)
+// is drawn as a separate territory with a dashed boundary, not as part of Morocco.
+document.getElementById("map").style.background = "#d6e3ea";
+map.createPane("countries");
+map.getPane("countries").style.zIndex = 250;
+map.attributionControl.addAttribution('Boundaries: <a href="https://www.naturalearthdata.com/">Natural Earth</a>');
+
+fetch("https://unpkg.com/world-atlas@2.0.2/countries-50m.json")
+  .then(function (r) { return r.json(); })
+  .then(function (topo) {
+    var all = topojson.feature(topo, topo.objects.countries).features;
+    var isWS = function (f) { return f.id === "732"; };
+
+    L.geoJSON({ type: "FeatureCollection", features: all.filter(function (f) { return !isWS(f); }) }, {
+      pane: "countries", interactive: false,
+      style: { color: "#a89f90", weight: 0.7, fillColor: "#f4f1ea", fillOpacity: 1 }
+    }).addTo(map);
+
+    L.geoJSON({ type: "FeatureCollection", features: all.filter(isWS) }, {
+      pane: "countries", interactive: false,
+      style: { color: "#6e6658", weight: 1.3, dashArray: "6 4", fillColor: "#f4f1ea", fillOpacity: 1 }
+    }).addTo(map);
+
+    L.marker([24.6, -13.2], {
+      pane: "countries", interactive: false,
+      icon: L.divIcon({
+        className: "ws-label", iconSize: [0, 0],
+        html: '<span style="font:600 9px/1.25 sans-serif;letter-spacing:.06em;color:#5f5a52;white-space:nowrap;text-align:center;display:block;transform:translate(-50%,-50%)">WESTERN<br>SAHARA</span>'
+      })
+    }).addTo(map);
+  });
 
 function makeIcon(count, layer) {
   var isCollab = (layer === "collaborators");
