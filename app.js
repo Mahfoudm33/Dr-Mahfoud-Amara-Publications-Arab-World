@@ -188,34 +188,75 @@ function typeClass(t){ return TYPE_CLASSES[t.toLowerCase()] || "pub-type-default
 //  MAP SETUP
 // ─────────────────────────────────────────────
 var map = L.map("map", { minZoom:2, maxZoom:10 }).setView([25,10],4);
-// Basemap: Natural Earth boundaries (no API key). Western Sahara (ISO 3166 code 732)
-// is drawn as a separate territory with a dashed boundary, not as part of Morocco.
+// Basemap: Natural Earth boundaries (no API key).
+// Natural Earth's world-atlas file follows a "de facto" line for Western Sahara: the
+// Moroccan-administered area west of the Berm is merged into Morocco (ISO 504) and only
+// the zone east of the Berm is coded as Western Sahara (ISO 732). To show the
+// internationally recognised territory (UN Non-Self-Governing Territory), Morocco and
+// Western Sahara are merged and re-split along the 27°40'N parallel, the Morocco –
+// Western Sahara boundary. Western Sahara is then drawn as a distinct territory.
 document.getElementById("map").style.background = "#d6e3ea";
 map.createPane("countries");
 map.getPane("countries").style.zIndex = 250;
-map.attributionControl.addAttribution('Boundaries: <a href="https://www.naturalearthdata.com/">Natural Earth</a>');
+map.attributionControl.addAttribution('Boundaries: <a href="https://www.naturalearthdata.com/">Natural Earth</a>, adapted');
+
+// Sutherland–Hodgman clip of one ring against a horizontal line (keepNorth: lat >= y).
+function clipRingAtLat(ring, y, keepNorth) {
+  var inside = function (p) { return keepNorth ? p[1] >= y : p[1] <= y; };
+  var cross = function (a, b) { var t = (y - a[1]) / (b[1] - a[1]); return [a[0] + t * (b[0] - a[0]), y]; };
+  var out = [];
+  for (var i = 0; i < ring.length; i++) {
+    var cur = ring[i], prev = ring[(i + ring.length - 1) % ring.length];
+    if (inside(cur)) { if (!inside(prev)) out.push(cross(prev, cur)); out.push(cur); }
+    else if (inside(prev)) out.push(cross(prev, cur));
+  }
+  if (out.length && (out[0][0] !== out[out.length - 1][0] || out[0][1] !== out[out.length - 1][1])) out.push(out[0].slice());
+  return out.length >= 4 ? out : null;
+}
+function clipMultiPolygonAtLat(mp, y, keepNorth) {
+  var polys = [];
+  mp.coordinates.forEach(function (poly) {
+    var rings = poly.map(function (r) { return clipRingAtLat(r, y, keepNorth); });
+    if (rings[0]) polys.push(rings.filter(Boolean));
+  });
+  return { type: "MultiPolygon", coordinates: polys };
+}
 
 fetch("https://unpkg.com/world-atlas@2.0.2/countries-50m.json")
   .then(function (r) { return r.json(); })
   .then(function (topo) {
-    var all = topojson.feature(topo, topo.objects.countries).features;
-    var isWS = function (f) { return f.id === "732"; };
+    var geoms = topo.objects.countries.geometries;
+    var isMAorWS = function (g) { return g.id === "504" || g.id === "732"; };
+    var others = topojson.feature(topo, { type: "GeometryCollection", geometries: geoms.filter(function (g) { return !isMAorWS(g); }) });
 
-    L.geoJSON({ type: "FeatureCollection", features: all.filter(function (f) { return !isWS(f); }) }, {
+    // Morocco + Western Sahara as one shape, then split at 27°40'N (27.6667°).
+    var BOUNDARY_LAT = 27 + 40 / 60;
+    var merged = topojson.merge(topo, geoms.filter(isMAorWS));
+    var morocco = { type: "Feature", properties: { name: "Morocco" }, geometry: clipMultiPolygonAtLat(merged, BOUNDARY_LAT, true) };
+    var westernSahara = { type: "Feature", properties: { name: "Western Sahara" }, geometry: clipMultiPolygonAtLat(merged, BOUNDARY_LAT, false) };
+
+    var landStyle = { color: "#a89f90", weight: 0.7, fillColor: "#f4f1ea", fillOpacity: 1 };
+    L.geoJSON(others, { pane: "countries", interactive: false, style: landStyle }).addTo(map);
+    L.geoJSON(morocco, { pane: "countries", interactive: false, style: landStyle }).addTo(map);
+
+    // Western Sahara: distinct tint, dashed boundary (disputed / non-self-governing territory).
+    L.geoJSON(westernSahara, {
       pane: "countries", interactive: false,
-      style: { color: "#a89f90", weight: 0.7, fillColor: "#f4f1ea", fillOpacity: 1 }
+      style: { color: "#5f5a52", weight: 1.4, dashArray: "5 4", fillColor: "#e9e3d6", fillOpacity: 1 }
     }).addTo(map);
 
-    L.geoJSON({ type: "FeatureCollection", features: all.filter(isWS) }, {
-      pane: "countries", interactive: false,
-      style: { color: "#6e6658", weight: 1.3, dashArray: "6 4", fillColor: "#f4f1ea", fillOpacity: 1 }
-    }).addTo(map);
-
-    L.marker([24.6, -13.2], {
+    L.marker([24.4, -12.9], {
       pane: "countries", interactive: false,
       icon: L.divIcon({
         className: "ws-label", iconSize: [0, 0],
         html: '<span style="font:600 9px/1.25 sans-serif;letter-spacing:.06em;color:#5f5a52;white-space:nowrap;text-align:center;display:block;transform:translate(-50%,-50%)">WESTERN<br>SAHARA</span>'
+      })
+    }).addTo(map);
+    L.marker([31.2, -7.2], {
+      pane: "countries", interactive: false,
+      icon: L.divIcon({
+        className: "ma-label", iconSize: [0, 0],
+        html: '<span style="font:600 9px/1.25 sans-serif;letter-spacing:.06em;color:#7a7368;white-space:nowrap;display:block;transform:translate(-50%,-50%)">MOROCCO</span>'
       })
     }).addTo(map);
   });
