@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dr Mahfoud Amara – Sport, Politics & Society in the Arab World</title>
-  <meta name="description" content="Interactive map of academic publications by Dr Mahfoud Amara, Associate Professor at Qatar University. Research covering sport, politics, nationalism, Islam, governance, and mega-events across 23 Arab countries." />
+<meta property="og:site_name" content="Dr. Mahfoud Amara — Digital Research Ecosystem">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#5c0f24">
+
+  <title>Dr. Mahfoud Amara – Sport, Politics & Society in the Arab World</title>
+  <meta name="description" content="Interactive map of academic publications by Dr. Mahfoud Amara, Associate Professor at Qatar University. Research covering sport, politics, nationalism, Islam, governance, and mega-events across 23 Arab countries." />
   <meta name="keywords" content="sport sociology, Arab world, football, sport politics, sport diplomacy, mega-events, Qatar, Algeria, FIFA World Cup, Pan-Arab Games, Islam sport, sport governance, MENA, sport nationalism, sport policy" />
   <meta name="author" content="Mahfoud Amara" />
   <link rel="canonical" href="https://mahfoudm33.github.io/Dr-Mahfoud-Amara-Publications-Arab-World/" />
@@ -14,28 +18,49 @@
   <meta name="DC.publisher" content="Qatar University, College of Sport Sciences" />
   <meta name="DC.coverage" content="Arab World; North Africa; Middle East" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Dr Mahfoud Amara – Sport, Politics & Society in the Arab World" />
+  <meta property="og:title" content="Dr. Mahfoud Amara – Sport, Politics & Society in the Arab World" />
   <meta property="og:description" content="Interactive geospatial map of 95+ academic publications on sport, politics, and society across 23 Arab countries." />
   <meta property="og:url" content="https://mahfoudm33.github.io/Dr-Mahfoud-Amara-Publications-Arab-World/" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%238b3a1e'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Georgia,serif' font-size='16' font-weight='700' fill='white'%3EMA%3C/text%3E%3C/svg%3E" />
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"ProfilePage","name":"Dr Mahfoud Amara – Academic Publications Map","url":"https://mahfoudm33.github.io/Dr-Mahfoud-Amara-Publications-Arab-World/","about":{"@type":"Person","name":"Mahfoud Amara","honorificPrefix":"Dr","jobTitle":"Associate Professor in Sport Social Sciences and Management","affiliation":{"@type":"CollegeOrUniversity","name":"Qatar University","department":"College of Sport Sciences"},"sameAs":["https://orcid.org/0000-0002-1418-6710","https://www.researchgate.net/profile/Mahfoud-Amara","http://qufaculty.qu.edu.qa/mamara/"],"identifier":{"@type":"PropertyValue","propertyID":"ORCID","value":"0000-0002-1418-6710"}}}
+  {"@context":"https://schema.org","@type":"ProfilePage","name":"Dr. Mahfoud Amara – Academic Publications Map","url":"https://mahfoudm33.github.io/Dr-Mahfoud-Amara-Publications-Arab-World/","about":{"@type":"Person","name":"Mahfoud Amara","honorificPrefix":"Dr","jobTitle":"Associate Professor in Sport Management and Social Sciences","affiliation":{"@type":"CollegeOrUniversity","name":"Qatar University","department":"College of Sport Sciences"},"sameAs":["https://orcid.org/0000-0002-1418-6710","https://www.researchgate.net/profile/Mahfoud-Amara","https://qufaculty.qu.edu.qa/mamara/"],"identifier":{"@type":"PropertyValue","propertyID":"ORCID","value":"0000-0002-1418-6710"}}}
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous" />
   <link rel="stylesheet" href="styles.css" />
+<style id="mae-shared">
+/* Shared Digital Research Ecosystem bar and footer — identical in every project. Edit in one place and copy to all. */
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid #c9a84c;outline-offset:2px}
+.mae-bar,.mae-foot{box-sizing:border-box;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;direction:ltr;text-align:left}
+.mae-bar *,.mae-foot *{box-sizing:border-box}
+.mae-bar a,.mae-foot a{all:unset;cursor:pointer}
+.mae-bar{display:flex;align-items:center;gap:12px;width:100%;height:40px;flex:0 0 40px;margin:0;padding:0 16px;background:#5c0f24;border-bottom:2px solid #c9a84c;color:#fff;font-size:12.5px;line-height:1;white-space:nowrap;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;position:relative;z-index:1002}
+.mae-bar::-webkit-scrollbar{display:none}
+.mae-bar .mae-home{flex:0 0 auto;padding:8px 14px 8px 0;border-right:1px solid rgba(230,200,110,.4);color:#f0d98a;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.mae-bar ul{display:flex;gap:2px;list-style:none;margin:0;padding:0}
+.mae-bar li{margin:0;padding:0;list-style:none}
+.mae-bar li a{display:block;padding:8px 10px;border-radius:4px;color:#fff;font-weight:500}
+.mae-bar li a:hover,.mae-bar .mae-home:hover{background:rgba(255,255,255,.14)}
+.mae-bar li a[aria-current]{background:#c9a84c;color:#2a0710;font-weight:700}
+.mae-bar a:focus-visible,.mae-foot a:focus-visible{outline:2px solid #fff;outline-offset:1px}
+.mae-foot{width:100%;margin:0;padding:18px 16px;background:#2a0710;border-top:2px solid #c9a84c;color:#e9dfe2;font-size:13px;line-height:1.7;text-align:center;position:relative;z-index:1}
+.mae-foot a{color:#f0d98a;text-decoration:underline;text-underline-offset:2px}
+.mae-foot a:hover{color:#fff}
+.mae-foot .mae-sep{opacity:.5;margin:0 6px}
+</style>
 </head>
 <body>
+<div class="mae-bar" role="navigation" aria-label="Digital Research Ecosystem — projects by Dr. Mahfoud Amara"><a class="mae-home" href="https://mahfoudm33.github.io/Digital-Research-Ecosystem-Project/">Digital Research Ecosystem</a><ul><li><a href="https://mahfoudm33.github.io/Sport-in-Qatar-Research-Project/">Qatar</a></li><li><a href="https://mahfoudm33.github.io/Sport-and-Algerian-Studies/">Algeria</a></li><li><a href="https://mahfoudm33.github.io/Dr-Mahfoud-Amara-Publications-Arab-World/" aria-current="page">Arab World</a></li><li><a href="https://mahfoudm33.github.io/Sport-in-Islam-and-Muslim-Communities-Project/">Sport in Islam</a></li><li><a href="https://mahfoudm33.github.io/Dr-Mahfoud-Amara-in-the-Peninsula-/">Peninsula Archive</a></li><li><a href="https://mahfoudm33.github.io/Dr-Mahfoud-Amara-webpage-/">Profile</a></li><li><a href="https://mahfoudm33.github.io/expertise/">Expertise</a></li></ul></div>
 
 <!-- ── ABOUT MODAL ── -->
-<div id="about-overlay" class="about-overlay" role="dialog" aria-modal="true">
+<div id="about-overlay" class="about-overlay" role="dialog" aria-modal="true" aria-labelledby="about-title">
   <div class="about-modal">
     <button class="about-close" id="about-close" aria-label="Close">&times;</button>
     <div class="about-eyebrow">About this Research Hub</div>
-    <h2 class="about-title">Sport as a Prism to Understand the Arab World</h2>
-    <p class="about-body">This platform maps over two decades of academic research by <strong>Dr Mahfoud Amara</strong>, Associate Professor in Sport Social Sciences &amp; Management at Qatar University's College of Sport Sciences.</p>
+    <h2 class="about-title" id="about-title">Sport as a Prism to Understand the Arab World</h2>
+    <p class="about-body">This platform maps over two decades of academic research by <strong>Dr. Mahfoud Amara</strong>, Associate Professor in Sport Management and Social Sciences at Qatar University's College of Sport Sciences.</p>
     <p class="about-body">The research examines sport — particularly football — as a social, political, and cultural phenomenon across 23 Arab countries, exploring its intersections with nationalism, post-colonial identity, mega-event diplomacy, Islam, and governance.</p>
     <div class="about-how">
       <div class="about-how-item"><span class="about-how-icon">🗺</span><div><strong>Map</strong> — click any country marker to see its research context, collaborators, and full publication list.</div></div>
@@ -45,7 +70,7 @@
     <div class="about-links">
       <a href="https://orcid.org/0000-0002-1418-6710" target="_blank" rel="noopener">ORCID ↗</a>
       <a href="https://www.researchgate.net/profile/Mahfoud-Amara" target="_blank" rel="noopener">ResearchGate ↗</a>
-      <a href="http://qufaculty.qu.edu.qa/mamara/publications/" target="_blank" rel="noopener">Full Publications ↗</a>
+      <a href="https://qufaculty.qu.edu.qa/mamara/publications/" target="_blank" rel="noopener">Full Publications ↗</a>
     </div>
     <button class="about-cta" id="about-start">Explore the Map →</button>
   </div>
@@ -56,8 +81,8 @@
   <div class="header-inner">
     <div class="header-text">
       <div class="header-eyebrow">Academic Publications · Qatar University</div>
-      <h1>Dr Mahfoud Amara</h1>
-      <p class="header-sub">Associate Professor in Sport Social Sciences &amp; Management · College of Sport Sciences, Qatar University</p>
+      <h1>Dr. Mahfoud Amara</h1>
+      <p class="header-sub">Associate Professor in Sport Management and Social Sciences · College of Sport Sciences, Qatar University</p>
       <p class="header-manifesto">"Sport as a prism to understand the Arab world."</p>
       <div class="header-meta-row">
         <div class="header-orcid">
@@ -146,7 +171,7 @@
       <label for="country-search" class="filter-label">Find a country</label>
       <div class="search-wrap">
         <svg class="search-icon" viewBox="0 0 20 20" fill="none"><circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <input id="country-search" type="search" placeholder="e.g. Algeria, Qatar…" autocomplete="off" />
+        <input id="country-search" type="search" aria-label="Search countries" placeholder="e.g. Algeria, Qatar…" autocomplete="off" />
       </div>
       <div id="country-list" class="country-list"></div>
     </div>
@@ -206,7 +231,7 @@
   </div>
   <div class="theme-search-wrap">
     <svg class="search-icon" viewBox="0 0 20 20" fill="none"><circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-    <input id="theme-search" type="search" placeholder="Search titles, countries, or keywords…" />
+    <input id="theme-search" type="search" aria-label="Search titles, countries or keywords" placeholder="Search titles, countries, or keywords…" />
   </div>
   <div id="theme-results-meta" class="theme-results-meta"></div>
   <ul id="theme-results" class="theme-results-list"></ul>
@@ -260,7 +285,7 @@
           <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="12" fill="#A6CE39"/><path d="M7.5 7h1.2v10H7.5V7zm3.8 0h3.3c3.1 0 4.9 1.9 4.9 5s-1.8 5-4.9 5h-3.3V7zm1.2 1.2v7.6h2c2.4 0 3.7-1.4 3.7-3.8s-1.3-3.8-3.7-3.8h-2zM7.5 5.2a.9.9 0 1 1 1.8 0 .9.9 0 0 1-1.8 0z" fill="#fff"/></svg>
           ORCID
         </a>
-        <a href="http://qufaculty.qu.edu.qa/mamara/publications/" target="_blank" rel="noopener" class="footer-presence-link">
+        <a href="https://qufaculty.qu.edu.qa/mamara/publications/" target="_blank" rel="noopener" class="footer-presence-link">
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
           QU Profile
         </a>
@@ -270,14 +295,15 @@
   </div>
   <div class="footer-base">
     <div class="footer-inner">
-      <span>© Dr Mahfoud Amara · Qatar University · College of Sport Sciences</span>
+      <span>© Dr. Mahfoud Amara · Qatar University · College of Sport Sciences</span>
     </div>
   </div>
 </footer>
+<div class="mae-foot" role="complementary" aria-label="About the author and the Digital Research Ecosystem">© 2026 Dr. Mahfoud Amara<span class="mae-sep" aria-hidden="true">·</span>Associate Professor in Sport Management and Social Sciences, College of Sport Sciences, Qatar University<br><a href="https://mahfoudm33.github.io/Digital-Research-Ecosystem-Project/">Digital Research Ecosystem</a><span class="mae-sep" aria-hidden="true">·</span><a href="https://orcid.org/0000-0002-1418-6710" rel="me noopener">ORCID</a><span class="mae-sep" aria-hidden="true">·</span><a href="https://scholar.google.com/citations?user=39pE9mIAAAAJ" rel="me noopener">Google Scholar</a><span class="mae-sep" aria-hidden="true">·</span><a href="https://www.researchgate.net/profile/Mahfoud-Amara" rel="me noopener">ResearchGate</a><span class="mae-sep" aria-hidden="true">·</span><a href="https://www.linkedin.com/in/amaramahfoud" rel="me noopener">LinkedIn</a></div>
 
 <!-- Leaflet first, then app.js WITHOUT type="module" -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
 <script src="app.js"></script>
 </body>
 </html>

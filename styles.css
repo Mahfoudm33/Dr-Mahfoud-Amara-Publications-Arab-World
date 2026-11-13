@@ -320,3 +320,34 @@ footer a:hover { color: #fff; }
 @media (max-width: 700px) {
   .footer-presence { display: none; }
 }
+
+/* ── Phone layout: stop the header's "Latest Research" box pushing the page sideways ── */
+@media (max-width: 700px) {
+  .header-inner > * { min-width: 0; max-width: 100%; }
+  .header-right { align-items: stretch; width: 100%; flex-shrink: 1; }
+  .latest-strip { max-width: 100%; }
+  .latest-item { min-width: 0; }
+}
+/* ── Visible keyboard focus ── */
+:where(a, button, input, select, [tabindex]):focus-visible { outline: 2px solid #8b3a1e; outline-offset: 2px; }
+
+/* ── Readable contrast for small text ── */
+.latest-year { color: #eaa585; }
+.count-badge { color: #555044; }
+.footer-presence-link, .footer-links a, .footer-presence-label, .footer-metric-desc, .footer-presence-updated, .footer-inner > span { color: #a8a09a; }
+.footer-metric-num { color: #c8c0b8; }
+
+/* ── Tablet and phone layout: map above the panel, nothing wider than the screen ── */
+@media (max-width: 900px) {
+  .layout { grid-template-columns: minmax(0, 1fr); padding: 0.75rem; }
+  #map { position: relative; top: 0; height: 60vh; min-height: 340px; }
+  .panel { max-height: none; min-width: 0; }
+}
+@media (max-width: 700px) {
+  .page-header { padding: 1rem; }
+  .header-stats { flex-wrap: wrap; justify-content: space-around; gap: 0.6rem; padding: 0.6rem; }
+  .tab-nav { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .tab-btn { padding: 0.7rem 0.75rem; font-size: 0.78rem; white-space: nowrap; flex: 0 0 auto; }
+  .pathways-grid { grid-template-columns: minmax(0, 1fr); }
+  .layer-btns { flex-wrap: wrap; }
+}
